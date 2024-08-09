@@ -18,22 +18,22 @@
         .card-container {
             perspective: 1000px;            
             margin: 50px auto;
-            cursor: pointer; 
+            cursor: pointer;
+            max-width: 500px; 
+            padding: 20px;
         }
         .card-flip {
             position: relative;
-            width: 500px; 
+            width: 100%; 
             height: 350px; 
             transform-style: preserve-3d;
             transition: transform 0.6s;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             border-radius: 15px;
+            background-color: white;
         }
         .flipped {
             transform: rotateY(180deg);
-        }
-        .card-flip.flipped .card-front {
-            visibility: hidden; /* Oculta la parte frontal cuando está girada */
         }
         .card-front, .card-back {
             position: absolute;
@@ -41,9 +41,10 @@
             height: 100%;
             backface-visibility: hidden;
             border-radius: 15px;
+            box-sizing: border-box;
         }
         .card-front {
-            background-color: #ff6f61; 
+            background-color: #ff6f61;
             color: white;
             display: flex;
             justify-content: center;
@@ -51,31 +52,23 @@
             font-size: 1.7em;
         }
         .card-back {
-            background-color: #ff7f50; 
+            background-color: #ff7f50;
             color: white;
             transform: rotateY(180deg);
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            font-size: 1.7em; 
-        }
-        .background-design {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.1;
+            font-size: 1.7em;
         }
         .card-back img {
-            width: 140px; 
+            width: 140px;
             margin-top: 20px;
         }
         .container-text {
             text-align: center;
-            height: 60px; 
-            margin-bottom: 20px; 
+            height: 60px;
+            margin-bottom: 20px;
         }
         .typing-effect {
             border-right: 2px solid white;
@@ -104,25 +97,25 @@
 </head>
 <body>
 
-    <div class="background-design"></div>
-
-    <div class="card-container" onclick="this.querySelector('.card-flip').classList.toggle('flipped');">
-        <div class="card-flip">
-            <div class="card-front d-flex justify-content-center align-items-center flex-column">
-                <div class="bounce">Presióname por favor</div>
-            </div>
-            <div class="card-back d-flex justify-content-center align-items-center flex-column">
-                <div class="container-text">
-                    <div id="typing-text" class="typing-effect"></div>
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="card-container" onclick="this.querySelector('.card-flip').classList.toggle('flipped');">
+            <div class="card-flip">
+                <div class="card-front d-flex justify-content-center align-items-center flex-column">
+                    <div class="bounce">Presióname </div>
                 </div>
-                <img src="cat.gif" alt="Gato">
+                <div class="card-back d-flex justify-content-center align-items-center flex-column">
+                    <div class="container-text">
+                        <div id="typing-text" class="typing-effect"></div>
+                    </div>
+                    <img src="cat.gif" alt="Gato">
+                </div>
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        const textArray = ["Suerte en tus exámenes", "¡Tú puedes! :3"];
+        const textArray = ["Suerte en tu parcial", "¡Tú puedes costeña!"];
         let textIndex = 0;
         let charIndex = 0;
         const typingDelay = 100;
